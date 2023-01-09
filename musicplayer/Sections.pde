@@ -1,0 +1,3 @@
+void rectangles() {}
+
+void points() {}

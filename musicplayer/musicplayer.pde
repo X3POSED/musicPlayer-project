@@ -13,7 +13,7 @@ AudioPlayer song1; //creates "Play List" variable holding extensions WAV, AIFF, 
 void setup () {
   //size(500, 600); //Remind you of Display Geometry
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder, like loadImage
-  song1 = minim.loadFile("../Music/Ghost_Walk.mp3");//able to pass absolute path, file name & extension, and URL
+  song1 = minim.loadFile("../Music songs/");//able to pass absolute path, file name & extension, and URL
 }//End setup
 //
 void draw() {
