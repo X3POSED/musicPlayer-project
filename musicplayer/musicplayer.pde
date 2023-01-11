@@ -10,7 +10,7 @@ import ddf.minim.ugens.*;
 Minim minim; //creates object to access all functions
 AudioPlayer song1; //creates "Play List" variable holding extensions WAV, AIFF, AU, SND, and MP3
 //
-void setup () {
+void setup() {
   //size(500, 600); //Remind you of Display Geometry
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder, like loadImage
   song1 = minim.loadFile("../Music songs/");//able to pass absolute path, file name & extension, and URL
