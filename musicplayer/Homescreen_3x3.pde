@@ -1,4 +1,1 @@
-//Global variables
 
-void draw() {
-} 

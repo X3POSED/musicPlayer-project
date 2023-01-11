@@ -1,4 +1,4 @@
-//Library: use Sketch / Import Library / Add Library / Minim
+//Library: use Sketch / Import Library / Minim
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -10,50 +10,55 @@ import ddf.minim.ugens.*;
 Minim minim; //creates object to access all functions
 AudioPlayer song1; //creates "Play List" variable holding extensions WAV, AIFF, AU, SND, and MP3
 //
-void setup() {
-  //size(500, 600); //Remind you of Display Geometry
+void setup () {
+  //size(500, 600);
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder, like loadImage
-  song1 = minim.loadFile("../Music songs/");//able to pass absolute path, file name & extension, and URL
-}//End setup
+  song1 = minim.loadFile("../Music songs/"); //able to pass absolute path, file name, and URL
+} //End setup()
 //
 void draw() {
-}//End draw
+  println("Song Position", song1.position(), "Song Length", song1.length());
+} //End draw()
 //
 void keyPressed() {
-  //if ( key=='P' || key=='p' ) song1.play(); //Parameter is milli-seconds from start of audio file to start playing (illustrate with examples)
-  if ( key=='P' || key=='p' ) {//Play Pause Stop Button
-    if ( song1.isPlaying() ) {
-      song1.pause();
-    } else if ( song1.position() >= song1.length()-song1.length()*1/5 ) {
-      song1.rewind();
-      song1.play();
-    } else {
-      song1.play();
-    }
-  }//End Play Pause STop Button
-  int loopNum = 2; //Local Variable plays once and loops twice
-  if ( key=='L' || key=='l' ) song1.loop(loopNum-1); //Parameter is Parameter is number of repeats
-  if ( key=='I' || key=='i' ) song1.loop(-1); //Parameter is for infinite loops
-  if ( key=='F' || key=='f' ) song1.skip(1000); //skip forward 1 second (1000 milliseconds)
-  if ( key=='R' || key=='r' ) song1.skip(-1000); //skip backwards 1 second, notice negative, (1000 milliseconds)
-  if ( key=='M' || key=='m' ) {//MUTE Button
+  int loopNum = 0; //Local Variable plays once and loops twice
+  //Play Button as zero repeat
+  if ( key == 'l' || key == 'L') song1.loop(loopNum); //Parameter is Parameter is number of repeats
+  //Stop as stop and begin from the beginning of the song
+  if ( key=='m' || key=='M' ) {//Muted Button
     if ( song1.isMuted() ) {
       song1.unmute();
     } else {
       song1.mute();
     }
-  }//End MUTE Button
-  if ( key=='S' || key=='s' ) {//STOP Button
+  }//End Muted button
+  if ( key == 'f' || key == 'F') song1.skip(1000); // skip forward 1 second (1000 milliseconds)
+  if ( key == 'r' || key == 'R') song1.skip(-1000); // skip backward 1 second (1000 milliseconds)
+  // Stop
+  if (key == 's' || key == 'S') {
     if ( song1.isPlaying() ) {
       song1.pause();
-      song1.rewind(); //Cue SONG to play from beginning
-    } else {
-      song1.rewind(); //Not playing means song is paused or song position is at the end of the file
+      song1.rewind();
+    } else { //Song is not playing
+      song1.rewind();
     }
-  }//End STOP Button
-}//End keyPressed
+  }//End Stop
+  //Play Pause, see CAUTION Note in ReadMe.txt
+  if (key == 'p' || key == 'P') {
+    if ( song1.isPlaying() ) {
+      song1.pause();
+    } else if ( song1.position() >= song1.length()-song1.length()*1/5 ) { //Special Situation: at the end of the song, rewind (built-in stop button)
+      //End of Song Calculation: hardcode 1000 OR use formula to say "listen to 80% of the sone"
+      //Alternate formula: song1.length() - song1.position() <= 1000
+      song1.rewind();
+      song1.play();
+    } else {
+      song1.play(); //Parameter is milli-seconds from start of audio file to start of playing (i.e. 14000 will start 14 seconds into the song)
+    }
+  }//End Play Pause
+} //End keyPressed()
 //
 void mouseClicked() {
-}//End mousePressed
+} //End mouseClicked()
 //
 //End Main Program
