@@ -13,7 +13,7 @@ AudioPlayer song1; //creates "Play List" variable holding extensions WAV, AIFF, 
 void setup () {
   //size(500, 600);
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder, like loadImage
-  song1 = minim.loadFile("../Music songs/"); //able to pass absolute path, file name, and URL
+  song1 = minim.loadFile("../Music songs/2 Chainz, Wiz Khalifa - We Own It (Fast & Furious).mp3"); //able to pass absolute path, file name, and URL
 } //End setup()
 //
 void draw() {
