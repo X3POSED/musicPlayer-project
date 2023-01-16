@@ -11,7 +11,7 @@ Minim minim; //creates object to access all functions
 AudioPlayer song1; //creates "Play List" variable holding extensions WAV, AIFF, AU, SND, and MP3
 //
 void setup () {
-  //size(500, 600);
+  //size(1920,1080);
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder, like loadImage
   song1 = minim.loadFile("../Music songs/Nothingtosay - Lazyness.mp3"); //able to pass absolute path, file name, and URL
 } //End setup()
