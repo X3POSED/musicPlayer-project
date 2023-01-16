@@ -13,7 +13,7 @@ AudioPlayer song1; //creates "Play List" variable holding extensions WAV, AIFF, 
 void setup () {
   //size(500, 600);
   minim = new Minim(this); //load from data directory, loadFile should also load from project folder, like loadImage
-  song1 = minim.loadFile("../Music songs/2 Chainz, Wiz Khalifa - We Own It (Fast & Furious).mp3"); //able to pass absolute path, file name, and URL
+  song1 = minim.loadFile("../Music songs/Nothingtosay - Lazyness.mp3"); //able to pass absolute path, file name, and URL
 } //End setup()
 //
 void draw() {
@@ -32,8 +32,8 @@ void keyPressed() {
       song1.mute();
     }
   }//End Muted button
-  if ( key == 'f' || key == 'F') song1.skip(1000); // skip forward 1 second (1000 milliseconds)
-  if ( key == 'r' || key == 'R') song1.skip(-1000); // skip backward 1 second (1000 milliseconds)
+  if ( key == '1' || key == '!') song1.skip(1000); // skip forward 1 second (1000 milliseconds)
+  if ( key == '2' || key == '@') song1.skip(-1000); // skip backward 1 second (1000 milliseconds)
   // Stop
   if (key == 's' || key == 'S') {
     if ( song1.isPlaying() ) {
